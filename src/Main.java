@@ -6,6 +6,12 @@ import java.util.stream.IntStream;
 
 public class Main {
 
+    public static int sommeDiviseursPropres(final int nbre) {
+        return IntStream.rangeClosed(2, (int) Math.sqrt(nbre))
+                 .filter(d -> nbre % d == 0)  // On ne garde que les diviseurs de nbre
+                 .map(d -> d + nbre/d)        // On les remplace par leur somme avec nbre/d
+                 .sum() + 1;                  // On fait leur somme et on ajoute 1
+    }
 
     public static void main(String[] args) {
 
@@ -33,7 +39,11 @@ public class Main {
         for (int e : tab) {System.out.print(e + ", "); }
         System.out.println();
 
-
+        // Liste des nombres parfaits < 1000
+        System.out.println(IntStream.rangeClosed(2, 1000)
+                                     .boxed()
+                                     .filter(n -> sommeDiviseursPropres(n) == n)
+                                     .collect(Collectors.toList()));
 
     }
 }
