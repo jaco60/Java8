@@ -30,8 +30,8 @@ public class Main {
         System.out.println();
 
         final List<Integer> li2 = IntStream.rangeClosed(1, 10)
-                                           .boxed()               // pour convertir les int en Integer
                                            .filter(x -> x > 3)
+                                           .boxed()               // pour convertir les int en Integer
                                            .collect(Collectors.toList());
         System.out.println("li2 : " + li2);
 
@@ -41,8 +41,8 @@ public class Main {
 
         // Liste des nombres parfaits < 1000
         System.out.println(IntStream.rangeClosed(2, 1000)
-                                     .boxed()
                                      .filter(n -> sommeDiviseursPropres(n) == n)
+                                     .boxed()
                                      .collect(Collectors.toList()));
 
     }
