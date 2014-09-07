@@ -45,5 +45,12 @@ public class Main {
                                      .boxed()
                                      .collect(Collectors.toList()));
 
+        // Idem, avec stockage dans un tableau (plus besoin de boxing)
+        final int[] parfaits = IntStream.rangeClosed(2, 1000)
+                                        .filter(n -> sommeDiviseursPropres(n) == n)
+                                        .toArray();
+        // vérification
+        for (int e : parfaits) {System.out.print(e + ", "); }
+        System.out.println();
     }
 }
