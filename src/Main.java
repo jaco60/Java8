@@ -33,7 +33,7 @@ public class Main {
         // Liste des éléments de li divisibles par 4
         System.out.println(li.stream().filter(divisiblePar(4)).collect(Collectors.toList()));
 
-        // Liste des éléments pairs de li divisibles par 4
+        // Liste des éléments pairs de li divisibles par 2
         System.out.println(li.stream().filter(pair).collect(Collectors.toList()));
 
         System.out.println(li.stream().map(e -> e * e).collect(Collectors.toList()));
