@@ -22,6 +22,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // nommage d'une lambda utilisable avec filter...
+        final Predicate<Integer> pair = nbre -> nbre % 2 == 0;
+
         // Somme des 10 premiers entiers
         System.out.println(IntStream.rangeClosed(1, 10).sum());
 
@@ -29,6 +32,9 @@ public class Main {
 
         // Liste des éléments de li divisibles par 4
         System.out.println(li.stream().filter(divisiblePar(4)).collect(Collectors.toList()));
+
+        // Liste des éléments pairs de li divisibles par 4
+        System.out.println(li.stream().filter(pair).collect(Collectors.toList()));
 
         System.out.println(li.stream().map(e -> e * e).collect(Collectors.toList()));
         System.out.println(li.stream().mapToInt(e -> e * e).sum());
