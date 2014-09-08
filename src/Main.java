@@ -20,7 +20,12 @@ public class Main {
 
         final List<Integer> li = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-        System.out.println(li.stream().filter(e -> e % 2 == 0).collect(Collectors.toList()));
+        System.out.println(li.stream().map(e -> e * e).collect(Collectors.toList()));
+        System.out.println(li.stream().mapToInt(e -> e * e).sum());
+
+        // La même chose, en parallèle
+        System.out.println(li.parallelStream().map(e -> e * e).collect(Collectors.toList()));
+        System.out.println(li.parallelStream().mapToInt(e -> e * e).sum());
 
         int[] tab = IntStream.rangeClosed(1, 10)
                               .filter(x -> x > 3)
