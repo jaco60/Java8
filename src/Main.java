@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -13,12 +14,21 @@ public class Main {
                  .sum() + 1;                  // On fait leur somme et on ajoute 1
     }
 
+    // Fonctionnelle utilisable avec filter...
+    public static Predicate<Integer> divisiblePar(final int d) {
+        // renvoie un prédicat... (exigé par filter)
+        return nbre -> nbre % d == 0;
+    }
+
     public static void main(String[] args) {
 
         // Somme des 10 premiers entiers
         System.out.println(IntStream.rangeClosed(1, 10).sum());
 
         final List<Integer> li = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        // Liste des éléments de li divisibles par 4
+        System.out.println(li.stream().filter(divisiblePar(4)).collect(Collectors.toList()));
 
         System.out.println(li.stream().map(e -> e * e).collect(Collectors.toList()));
         System.out.println(li.stream().mapToInt(e -> e * e).sum());
