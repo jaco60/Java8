@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -25,6 +26,12 @@ public class Main {
         // nommage d'une lambda utilisable avec filter...
         final Predicate<Integer> pair = nbre -> nbre % 2 == 0;
 
+        // nommage d'une fonctionnelle utilisable avec filter
+        // (évite de polluer la classe avec des méthodes statiques
+        // comme divisiblePar...
+        final Function<Integer, Predicate<Integer>> divBy =
+                d -> nbre -> nbre % d == 0;
+
         // Somme des 10 premiers entiers
         System.out.println(IntStream.rangeClosed(1, 10).sum());
 
@@ -32,6 +39,9 @@ public class Main {
 
         // Liste des éléments de li divisibles par 4
         System.out.println(li.stream().filter(divisiblePar(4)).collect(Collectors.toList()));
+
+        // Idem avec divBy.apply
+        System.out.println(li.stream().filter(divBy.apply(4)).collect(Collectors.toList()));
 
         // Liste des éléments pairs de li divisibles par 2
         System.out.println(li.stream().filter(pair).collect(Collectors.toList()));
