@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    public static int sommeDiviseursPropres(final int nbre) {
+    private static int sommeDiviseursPropres(final int nbre) {
         return IntStream.rangeClosed(2, (int) Math.sqrt(nbre))
                  .filter(d -> nbre % d == 0)  // On ne garde que les diviseurs de nbre
                  .map(d -> d + nbre/d)        // On les remplace par leur somme avec nbre/d
@@ -16,7 +16,7 @@ public class Main {
     }
 
     // Fonctionnelle utilisable avec filter...
-    public static Predicate<Integer> divisiblePar(final int d) {
+    private static Predicate<Integer> divisiblePar(final int d) {
         // renvoie un prédicat... (exigé par filter)
         return nbre -> nbre % d == 0;
     }
